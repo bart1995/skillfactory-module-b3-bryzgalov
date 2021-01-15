@@ -55,7 +55,7 @@ class Tag():
 		self.children = []
 
 		for attribute, value in kwargs.items():
-			self.attributes[attribute] = value
+			self.attributes[attribute+' = '] = '"' + value + '"'
 
 	def __iadd__(self, other):
 		self.children.append(other)
@@ -70,10 +70,10 @@ class Tag():
 	def __str__(self):
 		tag = '<{tag}'.format(tag=self.tag)
 		if self.klass:
-			classNames=' class = '
+			classNames=' class = "'
 			for className in self.klass:
 				classNames += className + ' '
-			tag += classNames
+			tag += classNames + '"'
 		else:
 			classNames=''
 
